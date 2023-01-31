@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button, Offcanvas, Form } from "react-bootstrap";
 import { nanoid } from "nanoid";
+import axios from "axios";
 
 const filterBtns = [
   "appliances",
@@ -28,8 +29,11 @@ export default function ProductCanvas(prop) {
       sale: event.target.sale.value,
       stock: event.target.stock.value,
     };
+
+    axios.post("http://localhost:2022/add", product);
     console.log(product);
   }
+
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
@@ -106,7 +110,7 @@ export default function ProductCanvas(prop) {
                 placeholder="Enter Stock"
               />
             </Form.Group>
-            <Button type="submit"> + Add product</Button>
+            <Button type="submit">+ Add product</Button>
           </form>
         </Offcanvas.Body>
       </Offcanvas>

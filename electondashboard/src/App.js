@@ -5,7 +5,8 @@ import Header from "./components/Header";
 import Dashboard from "./pages/Dashboard";
 import Products from "./pages/Products";
 import { asideMenus } from "./util/data"
-import axios from "axios"
+import axios from "axios";
+
 
 
 function App() {
@@ -14,7 +15,11 @@ function App() {
   useEffect(() => {
     axios.get("http://localhost:2022/products").then((res) => setProducts(res.data))
   }, [])
+
+
   console.log(products)
+
+
   return (
     <div>
       <Header />
@@ -22,7 +27,7 @@ function App() {
         <Aside menus={asideMenus} />
         <Routes>
           <Route path="/" element={<Dashboard />} />
-          {products && <Route path="/products" element={<Products data={products} />} />}
+          {products && <Route path="/products" element={<Products data={products} setProducts={setProducts} />} />}
           <Route path="/orders" element={<>hello2</>} />
           <Route path="/users" element={<>hello3</>} />
           <Route path="/moderator" element={<>hello4</>} />

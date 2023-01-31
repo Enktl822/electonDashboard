@@ -3,8 +3,10 @@ import ProductCanvas from "../components/ProductCanvas";
 import ProductRow from "../components/ProductRow";
 
 export default function Products(prop) {
-  const { data } = prop;
+  const { data, setProducts } = prop;
   console.log(data);
+  // post fetch
+
   return (
     <div>
       <ProductCanvas action="add" />
@@ -22,7 +24,7 @@ export default function Products(prop) {
         </thead>
         <tbody>
           {data.map((product, index) => (
-            <ProductRow key={index} data={product} />
+            <ProductRow key={index} data={product} setProducts={setProducts} />
           ))}
         </tbody>
       </Table>
