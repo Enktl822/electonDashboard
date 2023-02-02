@@ -1,4 +1,4 @@
-import { Table } from "react-bootstrap";
+import { Table, Form } from "react-bootstrap";
 import ProductCanvas from "../components/ProductCanvas";
 import ProductRow from "../components/ProductRow";
 
@@ -10,6 +10,11 @@ export default function Products(prop) {
   return (
     <div>
       <ProductCanvas action="add" />
+      <Form.Select>
+        <option>app</option>
+        <option>opp</option>
+        <option>kk</option>
+      </Form.Select>
       <Table bordered hover>
         <thead>
           <tr>
