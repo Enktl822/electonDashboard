@@ -41,9 +41,6 @@ export default function ProductRow(prop) {
             <Dropdown.Item href="#/action-2">
               <Button>Edit</Button>
             </Dropdown.Item>
-            <Dropdown.Item href="#/action-3">
-              <Button>Вебсайтаас нуух</Button>
-            </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
       </td>
