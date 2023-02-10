@@ -4,21 +4,22 @@ import Aside from "./components/AsideMenu";
 import Header from "./components/Header";
 import Dashboard from "./pages/Dashboard";
 import Products from "./pages/Products";
-import { asideMenus } from "./util/data"
+import { asideMenus } from "./util/data";
 import axios from "axios";
 
-
-
 function App() {
+  const [data, setData] = useState();
   const [products, setProducts] = useState();
 
   useEffect(() => {
-    axios.get("http://localhost:2022/products").then((res) => setProducts(res.data))
-  }, [])
+    axios
+      .get("http://localhost:2022/products")
+      .then((res) => setData(res.data));
+  }, []);
 
-
-  console.log(products)
-
+  useEffect(() => {
+    setProducts(data);
+  }, [data]);
 
   return (
     <div>
@@ -27,7 +28,18 @@ function App() {
         <Aside menus={asideMenus} />
         <Routes>
           <Route path="/" element={<Dashboard />} />
-          {products && <Route path="/products" element={<Products data={products} setProducts={setProducts} />} />}
+          {products && (
+            <Route
+              path="/products"
+              element={
+                <Products
+                  data={data}
+                  products={products}
+                  setProducts={setProducts}
+                />
+              }
+            />
+          )}
           <Route path="/orders" element={<>hello2</>} />
           <Route path="/users" element={<>hello3</>} />
           <Route path="/moderator" element={<>hello4</>} />
